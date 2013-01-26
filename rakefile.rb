@@ -32,7 +32,7 @@ BUILD_NUMBER = "#{BUILD_VERSION}.#{build_revision}"
 props = { :stage => BUILD_DIR, :artifacts => ARTIFACTS }
 
 desc "**Default**, compiles and runs tests"
-task :default => [:compile, :unit_test]
+task :default => [:compile]
 
 desc "Target used for the CI server"
 task :ci => [:update_all_dependencies, :default, :history, :package]
@@ -102,7 +102,7 @@ task :unit_test do
   assemblies = file.readlines()
   assemblies.each do |a|
 	test = a.gsub("\r\n", "").gsub("\n", "")
-	tests.push(test)
+	tests.push(test) unless test.nil?
   end
   file.close
   

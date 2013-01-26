@@ -1,0 +1,13 @@
+﻿<viewdata model="FubuInAction.HomeModel" />
+
+<content:main>
+<h1>Albums</h1>
+
+  !{this.LinkTo<FubuInAction.Albums.CreateAlbum>().Text("Create New")}
+  
+  <br></br>
+  <ul>
+    !{Model.Albums}
+  </ul>
+  
+</content:main>

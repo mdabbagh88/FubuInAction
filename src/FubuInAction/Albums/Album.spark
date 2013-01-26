@@ -1,0 +1,13 @@
+﻿<viewdata model="FubuInAction.Albums.Album" />
+
+<content:main>
+  !{this.FormFor<FubuInAction.Albums.Album>()}
+    <Edit name="Artist" />
+    <Edit name="Name" />
+    <Edit name="ReleaseDate" />
+    <Edit name="Genre" />
+    <input type="submit" value="Submit"/>
+  !{this.EndForm()}
+  
+  
+</content:main>
