@@ -1,11 +1,12 @@
 ﻿<viewdata model="FubuInAction.Albums.CreateAlbum" />
+<use namespace="FubuInAction.Albums" />
 
 <content:main>
-  !{this.FormFor<FubuInAction.Albums.CreateAlbum>()}
-    <Edit name="Artist" />
-    <Edit name="Name" />
-    <input type="submit" value="Submit"/>
-  !{this.EndForm()}
-  
-  
+
+	<Form model="CreateAlbum">
+		<Edit name="Artist" />
+		<Edit name="Name" />
+		<input type="submit" value="Submit"/>
+	</Form>
+ 
 </content:main>

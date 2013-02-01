@@ -1,10 +1,14 @@
 using System.Web.Routing;
 using Bottles;
+using FubuCore;
 using FubuMVC.Core;
+using FubuMVC.Core.UI.Elements;
 using FubuMVC.Core.UI.Forms;
 using FubuMVC.StructureMap;
 using FubuMVC.TwitterBootstrap.Forms;
+using FubuPersistence;
 using FubuPersistence.RavenDb;
+using HtmlTags.Conventions;
 using StructureMap.Configuration.DSL;
 
 namespace FubuInAction
@@ -18,7 +22,9 @@ namespace FubuInAction
             // This is bootstrapping an application with all default FubuMVC conventions and
             // policies pulling actions from only this assembly for classes suffixed with
             // "Endpoint" or "Endpoints"
-            return FubuApplication.DefaultPolicies().StructureMap<MyStructureMapRegistry>();
+            return FubuApplication
+				.For<MyFubuMvcPolicies>()
+				.StructureMap<MyStructureMapRegistry>();
 
 
 
@@ -40,11 +46,17 @@ namespace FubuInAction
         }
     }
 
-    public class MyFubuMvcPolicies : FubuRegistry
-    {
-        public MyFubuMvcPolicies()
-        {
-            // This is a DSL to change or add new conventions, policies, or application settings
-        }
-    }
+	public class HiddenEntityIdentifiers : IElementModifier
+	{
+		public bool Matches(ElementRequest token)
+		{
+			return token.Accessor.OwnerType.CanBeCastTo<IEntity>()
+			       && token.Accessor.Name == "Id";
+		}
+
+		public void Modify(ElementRequest request)
+		{
+			request.CurrentTag.Attr("type", "hidden");
+		}
+	}
 }

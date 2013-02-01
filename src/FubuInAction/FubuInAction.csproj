@@ -19,6 +19,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -139,11 +141,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Albums\Album.cs" />
+    <Compile Include="Albums\AlbumEndpoints.cs" />
+    <Compile Include="Albums\CreateAlbum.cs" />
     <Compile Include="BootstrapFubu.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="HomeEndpoint.cs" />
+    <Compile Include="MyFubuMvcPolicies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -151,7 +156,9 @@
     <Content Include="Shared\Application.spark" />
     <Content Include="Shared\_global.spark" />
     <Content Include="Albums\Album.spark" />
-    <Content Include="Albums\New.spark" />
+    <Content Include="Albums\New.spark">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Home.spark" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -185,6 +192,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

@@ -2,6 +2,7 @@
 
 <content:main>
   !{this.FormFor<FubuInAction.Albums.Album>()}
+	<Input name="Id" />
     <Edit name="Artist" />
     <Edit name="Name" />
     <Edit name="ReleaseDate" />
