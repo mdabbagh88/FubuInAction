@@ -4,6 +4,7 @@
         <meta charset="utf-8"   />
         <Asset src="twitterbootstrap"/>
         <Asset src="core.css" />
+        <Asset src="jqueryuicss" />
         <use content="head" />
         <Styles />
     </head>
